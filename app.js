@@ -1,12 +1,28 @@
 const canvas = document.querySelector("#draw");
 
+// Create 2d canvas
+const context = canvas.getContext("2d");
+const colourPicker = document.getElementById("colourPickerContainer");
+const colours = [
+  "red",
+  "yellow",
+  "blue",
+  "black",
+  "orange",
+  "green",
+  "gray",
+  "turquoise",
+  "indigo",
+  "purple",
+  "brown",
+  "white",
+  "pink",
+];
+
 // Where you draw on the page
 let lastX = 0;
 let lastY = 0;
 let drawing = false;
-
-// Create 2d canvas
-const context = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -15,6 +31,17 @@ context.strokeStyle = "#000000";
 context.lineJoin = "round";
 context.lineCap = "round";
 context.lineWidth = 10;
+
+function displayColours() {
+  colours.map((colour) => {
+    const button = document.createElement("button");
+    button.style.backgroundColor = colour;
+    button.className = "colour-buttons";
+    colourPicker.appendChild(button);
+  });
+}
+
+displayColours();
 
 function draw(e) {
   // If drawing equals false it returns
