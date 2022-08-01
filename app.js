@@ -4,7 +4,7 @@ const canvas = document.querySelector("#draw");
 const context = canvas.getContext("2d");
 const colourPicker = document.getElementById("colourPickerContainer");
 const colours = [
-  "red",
+  "#FF0000",
   "yellow",
   "blue",
   "black",
@@ -27,7 +27,6 @@ let drawing = false;
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-context.strokeStyle = "#000000";
 context.lineJoin = "round";
 context.lineCap = "round";
 context.lineWidth = 10;
@@ -38,6 +37,9 @@ function displayColours() {
     button.style.backgroundColor = colour;
     button.className = "colour-buttons";
     colourPicker.appendChild(button);
+    button.addEventListener("click", () => {
+      context.strokeStyle = colour;
+    });
   });
 }
 
