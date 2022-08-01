@@ -4,7 +4,7 @@ A painting app using the HTML5 Canvas API to render “brush” strokes.
 
 ## Features 
 
-- [ ] Draw coloured lines on a canvas when the user clicks and drags (or swipes if you want to support mobile).
+- [x] Draw coloured lines on a canvas when the user clicks and drags (or swipes if you want to support mobile).
 
 ## Stretch goals 
 
