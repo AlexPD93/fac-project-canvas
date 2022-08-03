@@ -1,8 +1,11 @@
 const canvas = document.querySelector("#draw");
-
 // Create 2d canvas
 const context = canvas.getContext("2d");
+
 const colourPicker = document.getElementById("colourPickerContainer");
+const increaseWidth = document.getElementById("increaseWidth");
+const decreaseWidth = document.getElementById("decreaseWidth");
+
 const colours = [
   "#FF0000",
   "yellow",
@@ -22,6 +25,8 @@ const colours = [
 // Where you draw on the page
 let lastX = 0;
 let lastY = 0;
+
+// Set drawing to start
 let drawing = false;
 
 canvas.width = window.innerWidth;
@@ -44,6 +49,14 @@ function displayColours() {
 }
 
 displayColours();
+
+function widenWidth() {
+  context.lineWidth = context.lineWidth + 5;
+}
+
+function narrowWidth() {
+  context.lineWidth = context.lineWidth - 5;
+}
 
 function draw(e) {
   // If drawing equals false it returns
@@ -76,3 +89,7 @@ canvas.addEventListener("mouseup", () => (drawing = false));
 
 // When the mouse is not on the page
 canvas.addEventListener("mouseout", () => (drawing = false));
+
+increaseWidth.addEventListener("click", widenWidth);
+
+decreaseWidth.addEventListener("click", narrowWidth);
