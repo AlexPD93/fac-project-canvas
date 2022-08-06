@@ -5,6 +5,7 @@ const context = canvas.getContext("2d");
 const colourPicker = document.getElementById("colourPickerContainer");
 const increaseWidth = document.getElementById("increaseWidth");
 const decreaseWidth = document.getElementById("decreaseWidth");
+const dashedLine = document.getElementById("dashedLine");
 
 const colours = [
   "#FF0000",
@@ -58,6 +59,11 @@ function narrowWidth() {
   context.lineWidth = context.lineWidth - 5;
 }
 
+let y = 15;
+function drawDashedLine(e) {
+  console.log(lastX);
+}
+
 function draw(e) {
   // If drawing equals false it returns
   if (!drawing) return;
@@ -93,3 +99,8 @@ canvas.addEventListener("mouseout", () => (drawing = false));
 increaseWidth.addEventListener("click", widenWidth);
 
 decreaseWidth.addEventListener("click", narrowWidth);
+
+dashedLine.addEventListener("click", (e) => {
+  [lastX, lastY] = [e.offsetX, e.offsetY];
+  drawDashedLine();
+});
