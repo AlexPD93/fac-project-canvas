@@ -3,7 +3,8 @@
   height: 95%;
 }
 
-#colourPickerContainer {
+#colourPickerContainer,
+#backgroundColourContainer {
   display: flex;
   flex-direction: row;
 }

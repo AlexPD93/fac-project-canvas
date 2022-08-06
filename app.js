@@ -3,6 +3,7 @@ const canvas = document.querySelector("#draw");
 const context = canvas.getContext("2d");
 
 const colourPicker = document.getElementById("colourPickerContainer");
+const backgroundColour = document.getElementById("backgroundColourContainer");
 const increaseWidth = document.getElementById("increaseWidth");
 const decreaseWidth = document.getElementById("decreaseWidth");
 const dashedLine = document.getElementById("dashedLine");
@@ -49,7 +50,21 @@ function displayColours() {
   });
 }
 
+function backgroundColours() {
+  colours.map((colour) => {
+    const button = document.createElement("button");
+    button.style.background = colour;
+    button.className = "colour-buttons";
+    backgroundColour.appendChild(button);
+    button.addEventListener("click", () => {
+      context.fillStyle = colour;
+      context.fillRect(0, 0, canvas.width, canvas.height);
+    });
+  });
+}
+
 displayColours();
+backgroundColours();
 
 function widenWidth() {
   context.lineWidth = context.lineWidth + 5;
@@ -61,12 +76,13 @@ function narrowWidth() {
 
 let y = 15;
 function drawDashedLine(e) {
-  console.log(lastX);
+  console.log(e.target);
 }
 
 function draw(e) {
-  // If drawing equals false it returns
-  if (!drawing) return;
+  if (!drawing)
+    // If drawing equals false it returns
+    return;
 
   // Start a new path
   context.beginPath();
@@ -100,7 +116,4 @@ increaseWidth.addEventListener("click", widenWidth);
 
 decreaseWidth.addEventListener("click", narrowWidth);
 
-dashedLine.addEventListener("click", (e) => {
-  [lastX, lastY] = [e.offsetX, e.offsetY];
-  drawDashedLine();
-});
+dashedLine.addEventListener("click", drawDashedLine);
