@@ -7,6 +7,7 @@ const backgroundColour = document.getElementById("backgroundColourContainer");
 const increaseWidth = document.getElementById("increaseWidth");
 const decreaseWidth = document.getElementById("decreaseWidth");
 const dashedLine = document.getElementById("dashedLine");
+const roundLine = document.getElementById("roundLine");
 
 const colours = [
   "#FF0000",
@@ -34,8 +35,8 @@ let drawing = false;
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-context.lineJoin = "round";
-context.lineCap = "round";
+// context.lineJoin = "round";
+// context.lineCap = "round";
 context.lineWidth = 10;
 
 function displayColours() {
@@ -74,16 +75,11 @@ function narrowWidth() {
   context.lineWidth = context.lineWidth - 5;
 }
 
-let y = 15;
-function drawDashedLine(e) {
-  console.log(e.target);
-}
-
 function draw(e) {
   if (!drawing)
     // If drawing equals false it returns
     return;
-
+  console.log(context.lineJoin);
   // Start a new path
   context.beginPath();
 
@@ -116,4 +112,12 @@ increaseWidth.addEventListener("click", widenWidth);
 
 decreaseWidth.addEventListener("click", narrowWidth);
 
-dashedLine.addEventListener("click", drawDashedLine);
+dashedLine.addEventListener("click", () => {
+  context.lineJoin = "bevel";
+  context.lineCap = "bevel";
+});
+
+roundLine.addEventListener("click", () => {
+  context.lineJoin = "round";
+  context.lineCap = "round";
+});
