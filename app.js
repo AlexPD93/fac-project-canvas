@@ -126,6 +126,6 @@ roundLine.addEventListener("click", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  context.lineJoin = "bevel";
-  context.lineCap = "bevel";
+  context.lineJoin = "round";
+  context.lineCap = "round";
 });
