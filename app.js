@@ -6,7 +6,7 @@ const colourPicker = document.getElementById("colourPickerContainer");
 const backgroundColour = document.getElementById("backgroundColourContainer");
 const increaseWidth = document.getElementById("increaseWidth");
 const decreaseWidth = document.getElementById("decreaseWidth");
-const dashedLine = document.getElementById("dashedLine");
+const beveledLine = document.getElementById("beveledLine");
 const roundLine = document.getElementById("roundLine");
 
 const colours = [
@@ -24,6 +24,9 @@ const colours = [
   "white",
   "pink",
 ];
+
+context.lineJoin = "round";
+context.lineCap = "round";
 
 // Where you draw on the page
 let lastX = 0;
@@ -79,7 +82,7 @@ function draw(e) {
   if (!drawing)
     // If drawing equals false it returns
     return;
-  console.log(context.lineJoin);
+
   // Start a new path
   context.beginPath();
 
@@ -112,7 +115,7 @@ increaseWidth.addEventListener("click", widenWidth);
 
 decreaseWidth.addEventListener("click", narrowWidth);
 
-dashedLine.addEventListener("click", () => {
+beveledLine.addEventListener("click", () => {
   context.lineJoin = "bevel";
   context.lineCap = "bevel";
 });
@@ -120,4 +123,9 @@ dashedLine.addEventListener("click", () => {
 roundLine.addEventListener("click", () => {
   context.lineJoin = "round";
   context.lineCap = "round";
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  context.lineJoin = "bevel";
+  context.lineCap = "bevel";
 });
