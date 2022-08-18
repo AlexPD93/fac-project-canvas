@@ -6,7 +6,7 @@ const colourPicker = document.getElementById("colourPickerContainer");
 const backgroundColour = document.getElementById("backgroundColourContainer");
 const increaseWidth = document.getElementById("increaseWidth");
 const decreaseWidth = document.getElementById("decreaseWidth");
-const beveledLine = document.getElementById("beveledLine");
+const squareLine = document.getElementById("squareLine");
 const roundLine = document.getElementById("roundLine");
 
 const colours = [
@@ -25,8 +25,8 @@ const colours = [
   "pink",
 ];
 
-context.lineJoin = "round";
-context.lineCap = "round";
+// context.lineJoin = "round";
+// context.lineCap = "round";
 
 // Where you draw on the page
 let lastX = 0;
@@ -115,15 +115,16 @@ increaseWidth.addEventListener("click", widenWidth);
 
 decreaseWidth.addEventListener("click", narrowWidth);
 
-beveledLine.addEventListener("click", () => {
-  context.lineJoin = "bevel";
-  context.lineCap = "bevel";
-});
+const changeLine = (e) => {
+  if (e.target.id === "squareLine") {
+    context.lineCap = "square";
+  } else if (e.target.id === "roundLine") {
+    context.lineCap = "round";
+  }
+};
 
-roundLine.addEventListener("click", () => {
-  context.lineJoin = "round";
-  context.lineCap = "round";
-});
+squareLine.addEventListener("click", changeLine);
+roundLine.addEventListener("click", changeLine);
 
 document.addEventListener("DOMContentLoaded", () => {
   context.lineJoin = "round";
