@@ -8,6 +8,7 @@ const increaseWidth = document.getElementById("increaseWidth");
 const decreaseWidth = document.getElementById("decreaseWidth");
 const squareLine = document.getElementById("squareLine");
 const roundLine = document.getElementById("roundLine");
+const download = document.getElementById("download");
 
 const colours = [
   "#FF0000",
@@ -99,6 +100,12 @@ function draw(e) {
   [lastX, lastY] = [e.offsetX, e.offsetY];
 }
 
+async function downloadCanvas(e) {
+  const anchor = document.getElementById("download");
+  anchor.href = canvas.toDataURL("image/png");
+  anchor.download = "IMAGE.PNG";
+}
+
 // Fired when mouse is pressed and before it is released
 canvas.addEventListener("mousedown", (e) => {
   drawing = true;
@@ -125,6 +132,8 @@ const changeLine = (e) => {
 
 squareLine.addEventListener("click", changeLine);
 roundLine.addEventListener("click", changeLine);
+
+download.addEventListener("click", downloadCanvas);
 
 document.addEventListener("DOMContentLoaded", () => {
   context.lineJoin = "round";
