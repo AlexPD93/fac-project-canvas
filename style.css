@@ -2,10 +2,13 @@ canvas {
   width: 100%;
 }
 
-#colourPickerContainer,
-#backgroundColourContainer {
+#customiseContainer {
   display: flex;
   flex-direction: row;
+}
+
+.center {
+  text-align: center;
 }
 
 .colour-buttons {

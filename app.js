@@ -11,7 +11,7 @@ const roundLine = document.getElementById("roundLine");
 const download = document.getElementById("download");
 
 const colours = [
-  "#FF0000",
+  "red",
   "yellow",
   "blue",
   "black",
@@ -19,7 +19,6 @@ const colours = [
   "green",
   "gray",
   "turquoise",
-  "indigo",
   "purple",
   "brown",
   "white",
