@@ -19,6 +19,12 @@ canvas {
   cursor: pointer;
 }
 
+#lineWidth {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
 #increaseWidth,
 #decreaseWidth {
   width: 2rem;
