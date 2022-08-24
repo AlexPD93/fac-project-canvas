@@ -7,6 +7,11 @@ canvas {
   flex-direction: row;
 }
 
+#colourPickerContainer,
+#backgroundColourContainer {
+  border: 1px solid black;
+}
+
 .center {
   text-align: center;
 }
@@ -25,6 +30,8 @@ canvas {
   gap: 10px;
   justify-content: center;
   align-items: center;
+  border: 1px black solid;
+  padding: 1px;
 }
 
 #increaseWidth,
